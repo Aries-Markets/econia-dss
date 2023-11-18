@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: aggregator
+  name: aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: aggregator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: aggregator
+    spec:
+      containers:
+        - env:
+            - name: DATABASE_URL
+              value: postgres://econia:econia@postgres:5432/econia
+          image: aggregator
+          name: aggregator
+          resources: {}
+      restartPolicy: Always
+status: {}
