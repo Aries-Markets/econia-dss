@@ -17,3 +17,9 @@ function apply-mainnet() {
     $dir 
     kubectl apply -f $dir/manifest/mainnet/artifacts/*$1.yaml
 }
+
+case "$1" in
+    testnet) apply-testnet $2 ;;
+    mainnet) apply-mainnet $2 ;;
+    *) echo "Invalid cmd" ;;
+esac
