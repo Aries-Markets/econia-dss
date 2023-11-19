@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: diesel
+    release: aries
+    upstream: econia
+  name: diesel
+  namespace: econia-testnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      econia.service.group: dss
+      io.kompose.service: diesel
+      release: aries
+      upstream: econia
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        econia.service.group: dss
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: diesel
+        release: aries
+        upstream: econia
+    spec:
+      containers:
+      - image: diesel
+        name: diesel
+        resources: {}
+      restartPolicy: Always
+status: {}

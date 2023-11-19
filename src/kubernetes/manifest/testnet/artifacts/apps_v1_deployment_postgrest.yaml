@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: postgrest
+    release: aries
+    upstream: econia
+  name: postgrest
+  namespace: econia-testnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      econia.service.group: dss
+      io.kompose.service: postgrest
+      release: aries
+      upstream: econia
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        econia.service.group: dss
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: postgrest
+        release: aries
+        upstream: econia
+    spec:
+      containers:
+      - env:
+        - name: PGRST_DB_ANON_ROLE
+          value: web_anon
+        - name: PGRST_DB_SCHEMA
+          value: api
+        - name: PGRST_DB_URI
+          value: postgres://econia:econia@postgres:5432/econia
+        image: postgrest/postgrest
+        name: postgrest
+        ports:
+        - containerPort: 3000
+          hostPort: 3000
+          protocol: TCP
+        resources: {}
+      restartPolicy: Always
+status: {}

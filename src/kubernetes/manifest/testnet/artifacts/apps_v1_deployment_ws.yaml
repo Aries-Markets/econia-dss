@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: ws
+    release: aries
+    upstream: econia
+  name: ws
+  namespace: econia-testnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      econia.service.group: dss
+      io.kompose.service: ws
+      release: aries
+      upstream: econia
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        econia.service.group: dss
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: ws
+        release: aries
+        upstream: econia
+    spec:
+      containers:
+      - env:
+        - name: PGWS_CHECK_LISTENER_INTERVAL
+          value: "1000"
+        - name: PGWS_DB_URI
+          value: postgres://econia:econia@postgres/econia
+        - name: PGWS_JWT_SECRET
+          value: econia_0000000000000000000000000
+        - name: PGWS_LISTEN_CHANNEL
+          value: econiaws
+        image: ws
+        name: ws
+        ports:
+        - containerPort: 3000
+          hostPort: 3001
+          protocol: TCP
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -32,10 +32,10 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /config/data/config.yaml
-              name: processsor-claim0
+              name: processsor-config
       restartPolicy: Always
       volumes:
-        - name: processsor-claim0
+        - name: processsor-config
           persistentVolumeClaim:
-            claimName: processsor-claim0
+            claimName: processsor-config
 status: {}

@@ -1,0 +1,11 @@
+resources:
+  - ../base
+
+namespace: econia-testnet
+
+configMapGenerator:
+  - name: processsor-config
+    files:
+      - ./processor/config.yaml
+    options:
+      disableNameSuffixHash: true

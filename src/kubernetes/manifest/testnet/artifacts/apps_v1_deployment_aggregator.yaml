@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: aggregator
+    release: aries
+    upstream: econia
+  name: aggregator
+  namespace: econia-testnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      econia.service.group: dss
+      io.kompose.service: aggregator
+      release: aries
+      upstream: econia
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        econia.service.group: dss
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: aggregator
+        release: aries
+        upstream: econia
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_URL
+          value: postgres://econia:econia@postgres:5432/econia
+        image: aggregator
+        name: aggregator
+        resources: {}
+      restartPolicy: Always
+status: {}

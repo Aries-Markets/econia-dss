@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: processsor
+    release: aries
+    upstream: econia
+  name: processsor
+  namespace: econia-testnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      econia.service.group: dss
+      io.kompose.service: processsor
+      release: aries
+      upstream: econia
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        econia.service.group: dss
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: processsor
+        release: aries
+        upstream: econia
+    spec:
+      containers:
+      - env:
+        - name: HEALTHCHECK_BEFORE_START
+          value: "false"
+        image: processsor
+        name: processsor
+        ports:
+        - containerPort: 8085
+          hostPort: 8085
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - mountPath: /config/data/config.yaml
+          name: processsor-config
+      restartPolicy: Always
+      volumes:
+      - name: processsor-config
+        persistentVolumeClaim:
+          claimName: processsor-config
+status: {}

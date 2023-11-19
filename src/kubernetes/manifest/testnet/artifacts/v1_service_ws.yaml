@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: ws
+    release: aries
+    upstream: econia
+  name: ws
+  namespace: econia-testnet
+spec:
+  ports:
+  - name: "3001"
+    port: 3001
+    targetPort: 3000
+  selector:
+    econia.service.group: dss
+    io.kompose.service: ws
+    release: aries
+    upstream: econia
+status:
+  loadBalancer: {}

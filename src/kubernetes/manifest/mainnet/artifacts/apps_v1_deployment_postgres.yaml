@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: postgres
+    release: aries
+    upstream: econia
+  name: postgres
+  namespace: econia-mainnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      econia.service.group: dss
+      io.kompose.service: postgres
+      release: aries
+      upstream: econia
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        econia.service.group: dss
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: postgres
+        release: aries
+        upstream: econia
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: econia
+        - name: POSTGRES_USER
+          value: econia
+        image: postgres
+        name: postgres
+        ports:
+        - containerPort: 5432
+          hostPort: 5432
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: db
+      restartPolicy: Always
+      volumes:
+      - name: db
+        persistentVolumeClaim:
+          claimName: db
+status: {}

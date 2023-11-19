@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    econia.service.group: dss
+    io.kompose.service: postgres
+    release: aries
+    upstream: econia
+  name: postgres
+  namespace: econia-mainnet
+spec:
+  ports:
+  - name: "5432"
+    port: 5432
+    targetPort: 5432
+  selector:
+    econia.service.group: dss
+    io.kompose.service: postgres
+    release: aries
+    upstream: econia
+status:
+  loadBalancer: {}

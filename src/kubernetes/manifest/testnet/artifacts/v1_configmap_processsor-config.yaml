@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  config.yaml: |-
+    health_check_port: 8085
+    server_config:
+      processor_config:
+        type: econia_transaction_processor
+        econia_address: 0xc0de11113b427d35ece1d8991865a941c0578b0f349acabbe9753863c24109ff
+      postgres_connection_string: postgres://econia:econia@postgres:5432/econia
+      indexer_grpc_data_service_address: https://grpc.testnet.aptoslabs.com:443
+      indexer_grpc_http2_ping_interval_in_secs: 60
+      indexer_grpc_http2_ping_timeout_in_secs: 10
+      number_concurrent_processing_tasks: 1
+      auth_token: aptoslabs_grpc_token_or_token_for_another_grpc_endpoint
+      starting_version: 649555969
+kind: ConfigMap
+metadata:
+  name: processsor-config
+  namespace: econia-testnet

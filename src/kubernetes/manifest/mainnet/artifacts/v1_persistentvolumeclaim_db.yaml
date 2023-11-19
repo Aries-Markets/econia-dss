@@ -3,11 +3,15 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
+    econia.service.group: dss
     io.kompose.service: db
+    release: aries
+    upstream: econia
   name: db
+  namespace: econia-mainnet
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 4Gi
