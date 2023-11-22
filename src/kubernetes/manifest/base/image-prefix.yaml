@@ -1,0 +1,9 @@
+apiVersion: builtin
+kind: PrefixTransformer
+metadata:
+  name: image-prefix
+
+prefix: 854153369854.dkr.ecr.ap-southeast-1.amazonaws.com/econia-dss/
+
+fieldSpecs:
+- path: spec/template/spec/containers/image

@@ -27,6 +27,7 @@ spec:
               value: econia
           image: postgres
           name: postgres
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5432
               hostPort: 5432

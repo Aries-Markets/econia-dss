@@ -1,20 +1,29 @@
-sortOptions:
-  order: fifo
 
 resources:
-  - db-persistentvolumeclaim.yaml
-  - postgres-deployment.yaml
-  - postgres-service.yaml
-  - diesel-deployment.yaml
-  - postgrest-deployment.yaml
-  - postgrest-service.yaml
-  - ws-deployment.yaml
-  - ws-service.yaml
-  - aggregator-deployment.yaml
-  - processor-deployment.yaml
-  - processor-service.yaml
+- db-persistentvolumeclaim.yaml
+- postgres-deployment.yaml
+- postgres-service.yaml
+- diesel-deployment.yaml
+- postgrest-deployment.yaml
+- postgrest-service.yaml
+- ws-deployment.yaml
+- ws-service.yaml
+- aggregator-deployment.yaml
+- processor-deployment.yaml
+- processor-service.yaml
 
-commonLabels:
-  release: aries
-  upstream: econia
-  econia.service.group: dss
+images:
+- name: '*'
+  newTag: latest
+
+transformers:
+- image-prefix.yaml
+
+labels:
+- includeSelectors: true
+  pairs:
+    econia.service.group: dss
+    release: aries
+    upstream: econia
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization

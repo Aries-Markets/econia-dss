@@ -24,6 +24,7 @@ spec:
               value: postgres://econia:econia@postgres:5432/econia
           image: aggregator
           name: aggregator
+          imagePullPolicy: IfNotPresent
           resources: {}
       restartPolicy: Always
 status: {}

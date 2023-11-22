@@ -3,14 +3,14 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: processsor
-  name: processsor
+    io.kompose.service: processor
+  name: processor
 spec:
   ports:
     - name: "8085"
       port: 8085
       targetPort: 8085
   selector:
-    io.kompose.service: processsor
+    io.kompose.service: processor
 status:
   loadBalancer: {}

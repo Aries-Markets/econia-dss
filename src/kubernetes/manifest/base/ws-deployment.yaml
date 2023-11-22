@@ -30,6 +30,7 @@ spec:
               value: econiaws
           image: ws
           name: ws
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
               hostPort: 3001

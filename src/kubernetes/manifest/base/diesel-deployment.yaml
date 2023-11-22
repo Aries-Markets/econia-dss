@@ -21,6 +21,7 @@ spec:
       containers:
         - image: diesel
           name: diesel
+          imagePullPolicy: IfNotPresent
           resources: {}
       restartPolicy: Always
 status: {}

@@ -11,7 +11,11 @@ function build() {
 
 function apply() {
     build $1
-    kubectl apply -f $dir/manifest/$1/artifacts/*$2.yaml
+    if [[ -z "$2" ]]; then
+        kubectl apply -f "$dir/manifest/$1/artifacts/"
+    else
+        kubectl apply -f "$dir/manifest/$1/artifacts/*$2.yaml"
+    fi
 }
 
 case "$1" in

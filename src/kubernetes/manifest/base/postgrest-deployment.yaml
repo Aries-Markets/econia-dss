@@ -26,7 +26,8 @@ spec:
               value: api
             - name: PGRST_DB_URI
               value: postgres://econia:econia@postgres:5432/econia
-          image: postgrest/postgrest
+          image: postgrest
+          imagePullPolicy: IfNotPresent
           name: postgrest
           ports:
             - containerPort: 3000
