@@ -1,11 +1,14 @@
 resources:
-  - ../base
+- ../base
+
+patches:
+- path: ./patches/db-persistentvolumeclaim.yaml
 
 namespace: econia-testnet
 
 configMapGenerator:
-  - name: processsor-config
-    files:
-      - ./processor/config.yaml
-    options:
-      disableNameSuffixHash: true
+- files:
+  - ./processor/config.yaml
+  name: processsor-config
+  options:
+    disableNameSuffixHash: true

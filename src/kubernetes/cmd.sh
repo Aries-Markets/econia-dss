@@ -2,24 +2,20 @@
 
 dir=$(dirname $(realpath $0))
 
-function apply-testnet() {
+function build() {
     kustomize build \
     --load-restrictor LoadRestrictionsNone \
-    --output $dir/manifest/testnet/artifacts \
-    $dir 
-    kubectl apply -f $dir/manifest/testnet/artifacts/*$1.yaml
+    --output $dir/manifest/$1/artifacts
+    $dir/manifest/$1
 }
 
-function apply-mainnet() {
-    kustomize build \
-    --load-restrictor LoadRestrictionsNone \
-    --output $dir/manifest/mainnet/artifacts \
-    $dir 
-    kubectl apply -f $dir/manifest/mainnet/artifacts/*$1.yaml
+function apply() {
+    build $1
+    kubectl apply -f $dir/manifest/$1/artifacts/*$2.yaml
 }
 
 case "$1" in
-    testnet) apply-testnet $2 ;;
-    mainnet) apply-mainnet $2 ;;
+    apply) apply $2 $3 ;;
+    build) build $2 ;;
     *) echo "Invalid cmd" ;;
 esac
