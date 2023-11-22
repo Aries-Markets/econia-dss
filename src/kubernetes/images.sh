@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# git submodule update --init --recursive
+
 dir=$(dirname $(realpath $0))
 
 IMAGE_TAG="latest"
