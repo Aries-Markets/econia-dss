@@ -12,5 +12,4 @@ spec:
       targetPort: 8085
   selector:
     io.kompose.service: processor
-status:
-  loadBalancer: {}
+

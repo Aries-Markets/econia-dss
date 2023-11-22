@@ -37,4 +37,3 @@ spec:
         name: aggregator
         resources: {}
       restartPolicy: Always
-status: {}

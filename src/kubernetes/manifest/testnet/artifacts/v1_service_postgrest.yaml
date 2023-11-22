@@ -19,5 +19,3 @@ spec:
     io.kompose.service: postgrest
     release: aries
     upstream: econia
-status:
-  loadBalancer: {}

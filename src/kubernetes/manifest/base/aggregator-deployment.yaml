@@ -27,4 +27,4 @@ spec:
           imagePullPolicy: IfNotPresent
           resources: {}
       restartPolicy: Always
-status: {}
+

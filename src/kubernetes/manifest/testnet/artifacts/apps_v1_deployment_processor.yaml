@@ -52,4 +52,3 @@ spec:
             path: config.yaml
           name: processor-config
         name: processor-config
-status: {}

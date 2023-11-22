@@ -12,5 +12,4 @@ spec:
       targetPort: 3000
   selector:
     io.kompose.service: postgrest
-status:
-  loadBalancer: {}
+

@@ -26,4 +26,4 @@ spec:
         name: diesel
         resources: {}
       restartPolicy: Never
-status: {}
+
