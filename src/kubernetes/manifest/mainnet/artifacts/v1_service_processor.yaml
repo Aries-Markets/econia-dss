@@ -4,11 +4,11 @@ metadata:
   creationTimestamp: null
   labels:
     econia.service.group: dss
-    io.kompose.service: processsor
+    io.kompose.service: processor
     release: aries
     upstream: econia
-  name: processsor
-  namespace: econia-testnet
+  name: processor
+  namespace: econia-mainnet
 spec:
   ports:
   - name: "8085"
@@ -16,7 +16,7 @@ spec:
     targetPort: 8085
   selector:
     econia.service.group: dss
-    io.kompose.service: processsor
+    io.kompose.service: processor
     release: aries
     upstream: econia
 status:

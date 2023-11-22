@@ -4,17 +4,17 @@ metadata:
   creationTimestamp: null
   labels:
     econia.service.group: dss
-    io.kompose.service: processsor
+    io.kompose.service: processor
     release: aries
     upstream: econia
-  name: processsor
-  namespace: econia-testnet
+  name: processor
+  namespace: econia-mainnet
 spec:
   replicas: 1
   selector:
     matchLabels:
       econia.service.group: dss
-      io.kompose.service: processsor
+      io.kompose.service: processor
       release: aries
       upstream: econia
   strategy:
@@ -25,7 +25,7 @@ spec:
       labels:
         econia.service.group: dss
         io.kompose.network/docker-default: "true"
-        io.kompose.service: processsor
+        io.kompose.service: processor
         release: aries
         upstream: econia
     spec:
@@ -33,19 +33,23 @@ spec:
       - env:
         - name: HEALTHCHECK_BEFORE_START
           value: "false"
-        image: processsor
-        name: processsor
+        image: 854153369854.dkr.ecr.ap-southeast-1.amazonaws.com/econia-dss/processor:latest
+        imagePullPolicy: IfNotPresent
+        name: processor
         ports:
         - containerPort: 8085
           hostPort: 8085
           protocol: TCP
         resources: {}
         volumeMounts:
-        - mountPath: /config/data/config.yaml
-          name: processsor-config
+        - mountPath: /config/data/
+          name: processor-config
       restartPolicy: Always
       volumes:
-      - name: processsor-config
-        persistentVolumeClaim:
-          claimName: processsor-config
+      - configMap:
+          items:
+          - key: config.yaml
+            path: config.yaml
+          name: processor-config
+        name: processor-config
 status: {}

@@ -15,5 +15,5 @@ data:
       starting_version: 154106802
 kind: ConfigMap
 metadata:
-  name: processsor-config
+  name: processor-config
   namespace: econia-mainnet

@@ -7,7 +7,7 @@ patches:
 namespace: econia-mainnet
 
 configMapGenerator:
-- name: processsor-config
+- name: processor-config
   files:
     - ./processor/config.yaml
   options:

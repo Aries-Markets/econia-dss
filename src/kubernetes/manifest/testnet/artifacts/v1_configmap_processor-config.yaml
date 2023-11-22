@@ -15,5 +15,5 @@ data:
       starting_version: 649555969
 kind: ConfigMap
 metadata:
-  name: processsor-config
+  name: processor-config
   namespace: econia-testnet
