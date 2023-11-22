@@ -5,7 +5,7 @@ dir=$(dirname $(realpath $0))
 function build() {
     kustomize build \
     --load-restrictor LoadRestrictionsNone \
-    --output $dir/manifest/$1/artifacts
+    --output $dir/manifest/$1/artifacts \
     $dir/manifest/$1
 }
 
