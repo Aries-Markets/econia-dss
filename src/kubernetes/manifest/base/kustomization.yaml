@@ -3,7 +3,7 @@ resources:
 - db-persistentvolumeclaim.yaml
 - postgres-deployment.yaml
 - postgres-service.yaml
-- diesel-deployment.yaml
+- diesel-job.yaml
 - postgrest-deployment.yaml
 - postgrest-service.yaml
 - ws-deployment.yaml

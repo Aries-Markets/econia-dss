@@ -1,16 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: diesel
   name: diesel
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      io.kompose.service: diesel
-  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -23,5 +18,5 @@ spec:
           name: diesel
           imagePullPolicy: IfNotPresent
           resources: {}
-      restartPolicy: Always
+      restartPolicy: Never
 status: {}

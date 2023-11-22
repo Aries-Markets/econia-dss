@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   creationTimestamp: null
   labels:
@@ -8,16 +8,8 @@ metadata:
     release: aries
     upstream: econia
   name: diesel
-  namespace: econia-mainnet
+  namespace: econia-testnet
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      econia.service.group: dss
-      io.kompose.service: diesel
-      release: aries
-      upstream: econia
-  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -33,5 +25,5 @@ spec:
         imagePullPolicy: IfNotPresent
         name: diesel
         resources: {}
-      restartPolicy: Always
+      restartPolicy: Never
 status: {}
