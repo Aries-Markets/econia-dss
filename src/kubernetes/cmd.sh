@@ -2,16 +2,15 @@
 
 dir=$(dirname $(realpath $0))
 
-export TESTNET_API_KEY="your key"
-export MAINNET_API_KEY="your key"
+export $(grep -v '^#' $HOME/.aptos/auth.env | xargs)
 
 function api_key() {
     case "$1" in
         "testnet")
-            echo "$TESTNET_API_KEY"
+            echo "$APTOS_TESTNET_API_KEY"
             ;;
         "mainnet")
-            echo "$MAINNET_API_KEY"
+            echo "$APTOS_MAINNET_API_KEY"
             ;;
         *)
             echo "Invalid parameter. Please specify testnet or mainnet."
