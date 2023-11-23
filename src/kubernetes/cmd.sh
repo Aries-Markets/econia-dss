@@ -12,6 +12,9 @@ function api_key() {
         "mainnet")
             echo "$APTOS_MAINNET_API_KEY"
             ;;
+        "local")
+            echo "$APTOS_TESTNET_API_KEY"
+            ;;
         *)
             echo "Invalid parameter. Please specify testnet or mainnet."
             ;;
