@@ -21,7 +21,7 @@ spec:
         upstream: econia
     spec:
       containers:
-      - image: 854153369854.dkr.ecr.ap-southeast-1.amazonaws.com/econia-dss/diesel:latest
+      - image: ariesethan/econia-dss-diesel:latest
         imagePullPolicy: IfNotPresent
         name: diesel
         resources: {}

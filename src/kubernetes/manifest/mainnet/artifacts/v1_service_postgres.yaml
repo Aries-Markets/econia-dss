@@ -19,4 +19,3 @@ spec:
     io.kompose.service: postgres
     release: aries
     upstream: econia
-

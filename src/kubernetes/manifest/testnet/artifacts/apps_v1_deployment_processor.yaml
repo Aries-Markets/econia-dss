@@ -33,7 +33,7 @@ spec:
       - env:
         - name: HEALTHCHECK_BEFORE_START
           value: "false"
-        image: 854153369854.dkr.ecr.ap-southeast-1.amazonaws.com/econia-dss/processor:latest
+        image: ariesethan/econia-dss-processor:latest
         imagePullPolicy: IfNotPresent
         name: processor
         ports:

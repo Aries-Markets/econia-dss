@@ -32,9 +32,8 @@ spec:
       - env:
         - name: DATABASE_URL
           value: postgres://econia:econia@postgres:5432/econia
-        image: 854153369854.dkr.ecr.ap-southeast-1.amazonaws.com/econia-dss/aggregator:latest
+        image: ariesethan/econia-dss-aggregator:latest
         imagePullPolicy: IfNotPresent
         name: aggregator
         resources: {}
       restartPolicy: Always
-

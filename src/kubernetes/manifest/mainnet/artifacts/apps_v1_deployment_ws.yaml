@@ -38,7 +38,7 @@ spec:
           value: econia_0000000000000000000000000
         - name: PGWS_LISTEN_CHANNEL
           value: econiaws
-        image: 854153369854.dkr.ecr.ap-southeast-1.amazonaws.com/econia-dss/ws:latest
+        image: ariesethan/econia-dss-ws:latest
         imagePullPolicy: IfNotPresent
         name: ws
         ports:
@@ -47,4 +47,3 @@ spec:
           protocol: TCP
         resources: {}
       restartPolicy: Always
-
